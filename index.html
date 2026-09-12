@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garage Detail — Estética Automotiva em Analândia/SP</title>
+<meta name="description" content="Garage Detail: lavagem, higienização e detalhamento automotivo em Analândia/SP. Agende pelo WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0b0d10;
+    --charcoal:#181c21;
+    --charcoal-2:#20252c;
+    --steel:#4b5560;
+    --fog:#aab3bc;
+    --fog-light:#d7dce1;
+    --white:#f5f7f9;
+    --blue:#2f6fed;
+    --blue-bright:#7db8ff;
+    --line: rgba(245,247,249,0.12);
+    --line-strong: rgba(245,247,249,0.22);
+    --radius: 3px;
+    --maxw: 880px;
+    font-size: 17px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--black);
+    color:var(--fog-light);
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Big Shoulders Display', 'Arial Narrow', sans-serif;
+    color:var(--white);
+    margin:0;
+    letter-spacing:0.01em;
+  }
+
+  .mono{
+    font-family:'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  a{color:inherit;}
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- Skip link / focus ---------- */
+  .skip-link{
+    position:absolute; left:-9999px; top:0;
+    background:var(--blue); color:var(--white); padding:10px 16px; z-index:100;
+  }
+  .skip-link:focus{ left:16px; top:16px; }
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--blue-bright);
+    outline-offset:3px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(11,13,16,0.86);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:16px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .brand{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:700;
+    font-size:1.35rem;
+    color:var(--white);
+    text-decoration:none;
+    display:flex;
+    align-items:baseline;
+    gap:6px;
+  }
+  .brand span{color:var(--blue-bright);}
+  .header-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--blue);
+    color:var(--white);
+    text-decoration:none;
+    padding:9px 16px;
+    border-radius:var(--radius);
+    font-weight:600;
+    font-size:0.88rem;
+    transition:background 0.15s ease;
+  }
+  .header-cta:hover{background:#255ed1;}
+  .header-cta svg{width:16px;height:16px;flex:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    padding:96px 0 76px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      radial-gradient(circle at 1.5px 1.5px, rgba(125,184,255,0.16) 1.2px, transparent 0);
+    background-size:26px 26px;
+    mask-image:linear-gradient(to bottom, black, transparent 85%);
+    pointer-events:none;
+  }
+  .hero-shine{
+    position:absolute;
+    top:-40%;
+    left:-20%;
+    width:70%;
+    height:220%;
+    background:linear-gradient(100deg, transparent 40%, rgba(125,184,255,0.10) 48%, rgba(125,184,255,0.22) 50%, rgba(125,184,255,0.10) 52%, transparent 60%);
+    transform:rotate(8deg) translateX(-120%);
+    animation:sweep 2.2s ease-out 0.3s 1 forwards;
+    pointer-events:none;
+  }
+  @keyframes sweep{
+    to{ transform:rotate(8deg) translateX(220%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-shine{ animation:none; opacity:0; }
+    html{scroll-behavior:auto;}
+  }
+  .hero-content{position:relative;}
+  .eyebrow{
+    color:var(--blue-bright);
+    font-size:0.85rem;
+    font-weight:600;
+    margin:0 0 18px;
+  }
+  h1.hero-title{
+    font-size:clamp(2.8rem, 8vw, 5.4rem);
+    font-weight:900;
+    line-height:0.94;
+    text-transform:uppercase;
+  }
+  .hero-title em{
+    font-style:normal;
+    color:var(--blue-bright);
+  }
+  .hero-sub{
+    max-width:52ch;
+    color:var(--fog);
+    font-size:1.08rem;
+    margin:26px 0 34px;
+  }
+  .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    align-items:center;
+  }
+  .btn-primary{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--blue);
+    color:var(--white);
+    text-decoration:none;
+    padding:14px 24px;
+    border-radius:var(--radius);
+    font-weight:600;
+    transition:background 0.15s ease, transform 0.15s ease;
+  }
+  .btn-primary:hover{background:#255ed1; transform:translateY(-1px);}
+  .btn-primary svg{width:19px;height:19px;flex:none;}
+  .btn-ghost{
+    color:var(--fog-light);
+    text-decoration:none;
+    border-bottom:1px solid var(--line-strong);
+    padding-bottom:2px;
+    font-weight:500;
+    font-size:0.95rem;
+  }
+  .btn-ghost:hover{border-color:var(--blue-bright); color:var(--white);}
+
+  .hero-meta{
+    margin-top:56px;
+    display:flex;
+    gap:32px;
+    flex-wrap:wrap;
+    border-top:1px solid var(--line);
+    padding-top:22px;
+  }
+  .hero-meta div{font-size:0.92rem; color:var(--fog);}
+  .hero-meta strong{
+    display:block;
+    color:var(--white);
+    font-weight:600;
+    font-size:0.98rem;
+  }
+
+  /* ---------- Section scaffolding ---------- */
+  section{
+    padding:64px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:36px;
+  }
+  .section-num{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--steel);
+    font-size:0.85rem;
+  }
+  h2.section-title{
+    font-size:1.9rem;
+    font-weight:700;
+  }
+  .section-note{
+    color:var(--fog);
+    max-width:60ch;
+    margin:-20px 0 36px;
+    font-size:0.98rem;
+  }
+
+  /* ---------- Services table ---------- */
+  .service-list{
+    border-top:1px solid var(--line-strong);
+  }
+  .service-row{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:6px 20px;
+    padding:20px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .service-name{
+    color:var(--white);
+    font-weight:600;
+    font-size:1.02rem;
+  }
+  .service-note{
+    grid-column:1 / -1;
+    color:var(--fog);
+    font-size:0.9rem;
+  }
+  .service-price{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    color:var(--blue-bright);
+    font-size:1.05rem;
+    white-space:nowrap;
+    justify-self:end;
+  }
+  .service-price.tbd{color:var(--fog); font-size:0.92rem;}
+  .services-footnote{
+    margin-top:24px;
+    padding:16px 18px;
+    background:var(--charcoal);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    font-size:0.92rem;
+    color:var(--fog-light);
+  }
+  .services-footnote strong{color:var(--blue-bright); font-weight:600;}
+
+  /* ---------- Spec / rules blocks (agendamento, horário) ---------- */
+  .spec-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .spec-cell{
+    background:var(--black);
+    padding:22px 24px;
+  }
+  .spec-label{
+    font-size:0.82rem;
+    color:var(--steel);
+    margin-bottom:8px;
+  }
+  .spec-value{
+    color:var(--fog-light);
+    font-size:1rem;
+  }
+  @media (max-width:600px){
+    .spec-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:48px;
+  }
+  @media (max-width:720px){
+    .contact-grid{grid-template-columns:1fr; gap:36px;}
+  }
+  .contact-list{list-style:none; margin:0; padding:0;}
+  .contact-list li{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .contact-list a{
+    text-decoration:none;
+    color:var(--fog-light);
+    font-weight:500;
+  }
+  .contact-list a:hover{color:var(--blue-bright);}
+  .icon-box{
+    flex:none;
+    width:38px; height:38px;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--charcoal);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+  }
+  .icon-box svg{width:18px;height:18px; color:var(--blue-bright);}
+  .contact-list .label{
+    display:block;
+    font-size:0.78rem;
+    color:var(--steel);
+    margin-bottom:2px;
+  }
+
+  .map-note{
+    padding:24px;
+    background:var(--charcoal);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+  }
+  .map-note h3{font-size:1.1rem; margin-bottom:10px; font-weight:700;}
+  .map-note p{color:var(--fog); font-size:0.92rem; margin:0 0 16px;}
+
+  /* ---------- Final CTA ---------- */
+  .final-cta{
+    text-align:left;
+    padding:72px 0;
+  }
+  .final-cta h2{
+    font-size:clamp(2rem, 5vw, 3.2rem);
+    max-width:16ch;
+    margin-bottom:22px;
+    text-transform:uppercase;
+  }
+
+  footer{
+    padding:32px 0 48px;
+    color:var(--steel);
+    font-size:0.85rem;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  footer a{color:var(--steel); text-decoration:none;}
+  footer a:hover{color:var(--fog-light);}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+<header>
+  <div class="header-inner">
+    <a class="brand" href="#main">GARAGE<span>DETAIL</span></a>
+    <a class="header-cta" href="https://wa.me/5519971205722?text=Oi!%20Vim%20pelo%20site%20e%20quero%20agendar%20um%20servi%C3%A7o." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.33 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.5 0 9.96-4.46 9.96-9.96S17.55 2 12.05 2h-.01Zm5.86 14.24c-.25.7-1.45 1.34-2 1.42-.51.08-1.16.11-1.87-.12-.43-.14-.98-.32-1.69-.63-2.98-1.29-4.92-4.3-5.07-4.5-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.68.51.25.6.85 2.07.93 2.22.08.15.13.32.02.52-.1.2-.15.32-.3.5-.15.17-.32.39-.45.52-.15.15-.31.32-.14.62.18.3.79 1.3 1.7 2.11 1.17 1.04 2.15 1.37 2.45 1.52.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.77.83 2.07.99.3.15.5.22.57.35.08.13.08.72-.18 1.42Z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="hero-shine" aria-hidden="true"></div>
+    <div class="wrap hero-content">
+      <p class="eyebrow">Analândia · SP</p>
+      <h1 class="hero-title">O carro<br>como saiu<br><em>da fábrica.</em></h1>
+      <p class="hero-sub">Lavagem, higienização e detalhamento automotivo com hora marcada. Um veículo por vez, atenção do início ao fim.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="https://wa.me/5519971205722?text=Oi!%20Vim%20pelo%20site%20e%20quero%20agendar%20um%20servi%C3%A7o." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.33 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.5 0 9.96-4.46 9.96-9.96S17.55 2 12.05 2h-.01Zm5.86 14.24c-.25.7-1.45 1.34-2 1.42-.51.08-1.16.11-1.87-.12-.43-.14-.98-.32-1.69-.63-2.98-1.29-4.92-4.3-5.07-4.5-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.68.51.25.6.85 2.07.93 2.22.08.15.13.32.02.52-.1.2-.15.32-.3.5-.15.17-.32.39-.45.52-.15.15-.31.32-.14.62.18.3.79 1.3 1.7 2.11 1.17 1.04 2.15 1.37 2.45 1.52.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.77.83 2.07.99.3.15.5.22.57.35.08.13.08.72-.18 1.42Z"/></svg>
+          Agendar pelo WhatsApp
+        </a>
+        <a class="btn-ghost" href="#servicos">Ver serviços e preços</a>
+      </div>
+
+      <div class="hero-meta">
+        <div><strong>Sexta a domingo*</strong>atendimento — confirme antes, nem toda sexta abre</div>
+        <div><strong>Rua Paineira, 101</strong>Bairro Ângelo Perin/CDHU, Analândia/SP</div>
+        <div><strong>1 veículo por vez</strong>1h a 2h30 por serviço</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">Serviços e preços</h2>
+        <span class="section-num mono">01</span>
+      </div>
+      <p class="section-note">Valores de referência — a sujeira e o tamanho do veículo podem alterar o preço final. Confirme no agendamento.</p>
+
+      <div class="service-list">
+        <div class="service-row">
+          <span class="service-name">Lavagem simples + limpeza interna completa + aspiração</span>
+          <span class="service-price mono">R$ 60</span>
+          <span class="service-note">Pode variar conforme a sujeira</span>
+        </div>
+        <div class="service-row">
+          <span class="service-name">Lavagem detalhada</span>
+          <span class="service-price mono">R$ 150</span>
+          <span class="service-note">Pode variar conforme a sujeira</span>
+        </div>
+        <div class="service-row">
+          <span class="service-name">Descontaminação + hidrorepelência de vidros</span>
+          <span class="service-price mono">R$ 150</span>
+        </div>
+        <div class="service-row">
+          <span class="service-name">Limpeza de motor</span>
+          <span class="service-price mono">R$ 60</span>
+          <span class="service-note">Pode variar conforme a sujeira</span>
+        </div>
+        <div class="service-row">
+          <span class="service-name">Cera Vonixx</span>
+          <span class="service-price mono">R$ 30</span>
+        </div>
+        <div class="service-row">
+          <span class="service-name">Higienização de bancos</span>
+          <span class="service-price mono">R$ 150</span>
+          <span class="service-note">Pode variar conforme a sujeira</span>
+        </div>
+        <div class="service-row">
+          <span class="service-name">Ducha somente por fora</span>
+          <span class="service-price mono">R$ 40</span>
+          <span class="service-note">Pode variar conforme a sujeira · ótimo para dias de chuva</span>
+        </div>
+        <div class="service-row">
+          <span class="service-name">Motos, caminhões, vans e demais veículos</span>
+          <span class="service-price tbd mono">a combinar</span>
+        </div>
+      </div>
+
+      <div class="services-footnote">
+        <strong>Em breve:</strong> polimento de faróis e polimento de lataria.
+      </div>
+    </div>
+  </section>
+
+  <section id="agendamento">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">Como funciona o agendamento</h2>
+        <span class="section-num mono">02</span>
+      </div>
+
+      <div class="spec-grid">
+        <div class="spec-cell">
+          <p class="spec-label">Duração</p>
+          <p class="spec-value">De 1h a 2h30, conforme o serviço.</p>
+        </div>
+        <div class="spec-cell">
+          <p class="spec-label">Atendimento</p>
+          <p class="spec-value">1 veículo por vez — atenção total ao seu carro.</p>
+        </div>
+        <div class="spec-cell">
+          <p class="spec-label">Antecedência</p>
+          <p class="spec-value">Agende com pelo menos 1 dia antes, ou logo no início da semana.</p>
+        </div>
+        <div class="spec-cell">
+          <p class="spec-label">Cancelamento</p>
+          <p class="spec-value">Precisou desmarcar? Avise o quanto antes.</p>
+        </div>
+        <div class="spec-cell">
+          <p class="spec-label">Confirmação</p>
+          <p class="spec-value">Você recebe mensagem e lembrete, sempre que possível.</p>
+        </div>
+        <div class="spec-cell">
+          <p class="spec-label">Horário de funcionamento</p>
+          <p class="spec-value">Geralmente sexta a domingo — mas nem toda sexta abrimos. Em algumas semanas, atendimento só sábado e domingo. Confirme antes pelo WhatsApp.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">Contato e localização</h2>
+        <span class="section-num mono">03</span>
+      </div>
+
+      <div class="contact-grid">
+        <ul class="contact-list">
+          <li>
+            <span class="icon-box"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.33 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.5 0 9.96-4.46 9.96-9.96S17.55 2 12.05 2h-.01Zm5.86 14.24c-.25.7-1.45 1.34-2 1.42-.51.08-1.16.11-1.87-.12-.43-.14-.98-.32-1.69-.63-2.98-1.29-4.92-4.3-5.07-4.5-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.68.51.25.6.85 2.07.93 2.22.08.15.13.32.02.52-.1.2-.15.32-.3.5-.15.17-.32.39-.45.52-.15.15-.31.32-.14.62.18.3.79 1.3 1.7 2.11 1.17 1.04 2.15 1.37 2.45 1.52.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.77.83 2.07.99.3.15.5.22.57.35.08.13.08.72-.18 1.42Z"/></svg></span>
+            <a href="https://wa.me/5519971205722" target="_blank" rel="noopener"><span class="label">WhatsApp</span>+55 19 97120-5722</a>
+          </li>
+          <li>
+            <span class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg></span>
+            <a href="mailto:garagedetail7@gmail.com"><span class="label">E-mail</span>garagedetail7@gmail.com</a>
+          </li>
+          <li>
+            <span class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></span>
+            <a href="https://instagram.com/mundoautomotivosp" target="_blank" rel="noopener"><span class="label">Instagram</span>@mundoautomotivosp</a>
+          </li>
+          <li>
+            <span class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.2A7 7 0 0 1 19 9.8C19 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.3"/></svg></span>
+            <span><span class="label">Endereço</span>Rua Paineira, nº 101 — Ângelo Perin/CDHU, Analândia/SP</span>
+          </li>
+        </ul>
+
+        <div class="map-note">
+          <h3>Região de atendimento</h3>
+          <p>Atendimento em Analândia – SP. Busca e entrega do veículo são possíveis, mas consulte antes se sua região está no percurso do dia.</p>
+          <a class="btn-ghost" href="https://wa.me/5519971205722?text=Oi!%20Meu%20endere%C3%A7o%20fica%20em..." target="_blank" rel="noopener">Perguntar sobre busca e entrega</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta" style="border-bottom:none;">
+    <div class="wrap">
+      <h2>Marque seu horário e deixe o carro em boas mãos.</h2>
+      <div class="hero-actions">
+        <a class="btn-primary" href="https://wa.me/5519971205722?text=Oi!%20Vim%20pelo%20site%20e%20quero%20agendar%20um%20servi%C3%A7o." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.33 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.5 0 9.96-4.46 9.96-9.96S17.55 2 12.05 2h-.01Zm5.86 14.24c-.25.7-1.45 1.34-2 1.42-.51.08-1.16.11-1.87-.12-.43-.14-.98-.32-1.69-.63-2.98-1.29-4.92-4.3-5.07-4.5-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.68.51.25.6.85 2.07.93 2.22.08.15.13.32.02.52-.1.2-.15.32-.3.5-.15.17-.32.39-.45.52-.15.15-.31.32-.14.62.18.3.79 1.3 1.7 2.11 1.17 1.04 2.15 1.37 2.45 1.52.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.77.83 2.07.99.3.15.5.22.57.35.08.13.08.72-.18 1.42Z"/></svg>
+          Chamar no WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>© <span id="year"></span> Garage Detail — Analândia/SP</span>
+  <a href="https://garagedetail.com.br">garagedetail.com.br</a>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
